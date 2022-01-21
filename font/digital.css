@@ -1,0 +1,9 @@
+@font-face {
+   font-family: digital;
+   src: url(font/digital-7.ttf);
+}
+ 
+h2 {
+   font-family: digital;
+   color: darkgreen;
+}

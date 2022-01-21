@@ -1,0 +1,88 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabellone</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/digital.css" />
+    <link rel="stylesheet" href="js/jquery-ui.css">
+    <script src="js/vendor/modernizr.js"></script>
+
+    <style>
+    #centrato {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+
+    /*
+    *  Where the magic happens
+    *  Centering method from CSS Tricks
+    *  http://css-tricks.com/centering-percentage-widthheight-elements/
+    */
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+    }
+</style>
+
+  </head>
+  <body style="background-color:#404038;">
+    <center><!---<img src="img/logo.jpeg"><br><br>-->
+    <div class="Timer"></div>
+  </center>
+
+    <div class="row">
+      <div class="large-12 columns" >
+        <div class="row">
+            <div class="large-4 columns">
+                <center>
+                  <label ><h3>Punti</h3></label>
+                  <div class="dig"><div class="dig" id="punti_left">00</div>&nbsp;<img id="ball_left" width="20px" src="img/ball.png"></div>                  
+                  <br>
+                  
+                  <div class="dig"><div class="dig" id="punti_right">00</div>&nbsp;<img id="ball_right" width="20px" src="img/blank.png"></div>                  
+              </center>
+            </div>
+            <div class="large-4 columns">
+              <center>
+                <label><h3>Game</h3></label>
+                <h1><div id="game_left">0</div></h1>
+                <h1><div id="game_right">0</div></h1>
+              </center>
+          </div>
+
+          <div class="large-4 columns">
+            <center>
+              <label><h3>Set</h3></label>
+              <div class="set" id="set_left">0</div>
+              <div class="set"  id="set_right">0</div>
+            </center>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns" ><center> 
+        <form id="tabellone"></form>
+        <button class="button round" id="reset" type="submit">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="button round" id="undo" type="submit">Undo</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="button round" id="full_screen" type="submit">Full Screen</button>
+
+      </form> 
+      </center>
+      </div>
+    </div>
+  
+
+    
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="gamepad.js"></script>
+    <script src="codice.js"></script>
+
+
+  </body>
+</html>

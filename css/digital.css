@@ -1,0 +1,43 @@
+@font-face {
+   font-family: digital;
+   src: url(../font/digital-7.ttf);
+}
+
+h1 {
+   font-family: digital;
+   color: red;
+   font-size:90px;
+}
+ 
+h2 {
+   font-family: digital;
+   color: yellow;
+   font-size:90px;
+   display:inline;
+}
+
+h3 {
+   font-family: digital;
+   color: yellow;
+   font-size:32px;
+}
+
+
+.dig {
+   font-family: digital;
+   color: yellow;
+   font-size:90px;
+   display:inline;
+}
+
+
+.set {
+   font-family: digital;
+   color: white;
+   font-size:90px;
+}
+
+.button {
+   background-color: transparent;
+   font-size:20px;
+}
