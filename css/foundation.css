@@ -1152,7 +1152,7 @@ button, .button {
   -moz-appearance: none;
   border-radius: 0;
   border-style: solid;
-  border-width: 0;
+  border-width: 1;
   cursor: pointer;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
@@ -1165,11 +1165,14 @@ button, .button {
   padding: 1rem 2rem 1.0625rem 2rem;
   font-size: 1rem;
   background-color: #008CBA;
-  border-color: #007095;
+  border-color: #e1e8eb;
   color: #FFFFFF;
   transition: background-color 300ms ease-out; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #007095; }
+    background-color: #404038; 
+    border-color: #b9b9b9;
+    border-width: 1px;
+  }
   button:hover, button:focus, .button:hover, .button:focus {
     color: #FFFFFF; }
   button.secondary, .button.secondary {

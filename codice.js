@@ -233,6 +233,17 @@ $(document).foundation();
   // LOAD SOUND
   audioElement = new Audio('./sound/bling_short.mp3');
 
+  // PLAYER 1 BUTTON
+  $('#player1').click(function(){
+    sinistra();
+  });
+
+  // PLAYER 2 BUTTON
+  $('#player2').click(function(){
+    destra();
+  });
+  
+
   // FULL SCREEN BUTTON
   $('#full_screen').click(function(){
     var elem = document.body; 
