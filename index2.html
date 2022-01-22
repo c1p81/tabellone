@@ -38,58 +38,70 @@
     <center><!---<img src="img/logo.jpeg"><br><br>-->
     <div class="Timer"></div>
   </center>
-  <form id="start" action="index2.html"  data-abide>
+
     <div class="row">
       <div class="large-12 columns" >
         <div class="row">
             <div class="large-4 columns">
-                  &nbsp;
+                <center>
+                  <h3><div id="punti">Point</div></h3>
+                  <div class="dig"><div class="dig" id="punti_left">00</div>&nbsp;<img id="ball_left" width="20px" src="img/ball.png"></div>                  
+                  <br>
+                  
+                  <div class="dig"><div class="dig" id="punti_right">00</div>&nbsp;<img id="ball_right" width="20px" src="img/blank.png"></div>                  
+              </center>
             </div>
             <div class="large-4 columns">
               <center>
-                <label><h3>Name Player 1</h3></label>
-                <input maxlength="15" style="text-align:center;" type="text" id="player1" value="Player1">
-                <label><h3>Name Player 2</h3></label>
-                <input maxlength="15" style="text-align:center;" type="text" id="player2" value="Player2">
-                <label><h3>Sets Number</h3></label>
-                <select id="max_set">
-                  <option value="3">3 Sets</option>
-                  <option value="5">5 Sets</option>
-                </select>
-
-
+                <label><h3>Game</h3></label>
+                <h1><div id="game_left">0</div></h1>
+                <h1><div id="game_right">0</div></h1>
               </center>
           </div>
-          &nbsp;
-          <div class="large-4 columns">
 
-          </div>
+          <div class="large-4 columns">
+            <center>
+              <label><h3>Set</h3></label>
+              <div class="set" id="set_left">0</div>
+              <div class="set"  id="set_right">0</div>
+            </center>
+        </div>
     </div>
     </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns" ><center> 
-        <button class="button round" id="go" type="submit">Ok</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <form id="tab"></form>
+        <button class="button round" id="player1" type="submit">Player 1</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="button round" id="player2" type="submit">Player 2</button>
 
+      </form> 
       </center>
       </div>
     </div>
-   </div>
-  </form> 
+
+
+
+    <div class="row">
+      <div class="large-12 columns" ><center> 
+        <form id="tabellone"></form>
+        <button class="button round" id="reset" type="submit">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="button round" id="undo" type="submit">Undo</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="button round" id="full_screen" type="submit">Full Screen</button>
+
+      </form> 
+      </center>
+      </div>
+    </div>
   
 
     
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
-    <script>
-      $("#go").click(function() {
-              sessionStorage.setItem("player1",$('#player1').val());
-		          sessionStorage.setItem("player2",$('#player2').val());
-		          sessionStorage.setItem("max_sets",$('#max_set').val());
-               $("#start" ).submit();
-      });
-      </script>
-      
+    <script src="gamepad.js"></script>
+    <script src="codice.js"></script>
+
+
   </body>
 </html>

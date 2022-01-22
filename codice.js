@@ -4,12 +4,17 @@ var game_left = 0;
 var game_right = 0;
 var set_left = 0;
 var set_right = 0;
-
+var name_player1 = "Player 1";
+var name_player2 = "Player 2";
+var max_sets = 3;
 // gestisce l'indicatore del servizio
 var ball_left = 1;
 
 // audio
 var audioElement;
+
+// tie-brak
+var TieBreak = false;
 
 // ************************************************************************
 // **********************************FULL SCREEN******************************
@@ -93,6 +98,20 @@ function game()
           $("#ball_right").attr("src","img/blank.png");
 
         }
+
+
+  if ((game_right == 6) && (game_left ==  6))
+        {
+          // TIE BREAK
+          TieBreak = true;  
+          $("#punti").text("Tie Break");
+          $("#punti_left").text("0")
+          $("#punti_right").text("0")
+
+          punti_left = 0;
+          punti_right = 0;
+          return;
+        }
   if ((game_left == 6) && (game_right < 5))
         {
           set_left++;
@@ -116,54 +135,81 @@ function game()
           set_right++;
           set();
         }
-  if ((game_right == 6) && (game_left ==  6))
-        {
-          // TIE BREAK
-        }
+
 
 }
 
 function calcola_punteggio()
 {
-  console.log("left " + punti_left  + " right  "+ punti_right);
 
-  switch (punti_left){
-    case 0: $("#punti_left").text("00");break;
-    case 1: $("#punti_left").text("15");break;
-    case 2: $("#punti_left").text("30");break;
-    case 3: $("#punti_left").text("40");break;
-    case 4: $("#punti_left").text("ADV");break;
-  }      
+  if (TieBreak)
+  {
+        // *************** PUNTEGGIO GAME ***********************
+        $("#punti_left").text(punti_left.toString());
+        $("#punti_right").text(punti_right.toString());
 
-  switch (punti_right){
-    case 0: $("#punti_right").text("00");break;
-    case 1: $("#punti_right").text("15");break;
-    case 2: $("#punti_right").text("30");break;
-    case 3: $("#punti_right").text("40");break;
-    case 4: $("#punti_right").text("ADV");break;
-  }      
-  if ((punti_right == 4) && (punti_left <3))
-            {
-              game_right++;
-              game();
-            } 
+        if ((punti_right >= 7) && ((punti_right-punti_left) >=2))
+        {
+          set_right++;
+          set();
+          TieBreak = false;
+          $("#punti").text("Point");
 
-  if ((punti_left == 4) && (punti_right <3))
-            {
-              game_left++;
-              game();
-            } 
-  if (punti_right == 5) 
-            {
-              game_right++;
-              game();
-            } 
+        }
 
-  if (punti_left == 5)
-            {
-              game_left++;
-              game();
-            } 
+      if ((punti_left  >= 7) && ((punti_left-punti_right) >=2))
+        {
+          set_left++;
+          set();
+          TieBreak = false;
+          $("#punti").text("Point");
+
+        }
+
+
+  }
+  else
+  {
+        // *************** PUNTEGGIO GAME ***********************
+
+        switch (punti_left){
+          case 0: $("#punti_left").text("00");break;
+          case 1: $("#punti_left").text("15");break;
+          case 2: $("#punti_left").text("30");break;
+          case 3: $("#punti_left").text("40");break;
+          case 4: $("#punti_left").text("ADV");break;
+        }      
+
+        switch (punti_right){
+          case 0: $("#punti_right").text("00");break;
+          case 1: $("#punti_right").text("15");break;
+          case 2: $("#punti_right").text("30");break;
+          case 3: $("#punti_right").text("40");break;
+          case 4: $("#punti_right").text("ADV");break;
+        }      
+        if ((punti_right == 4) && (punti_left <3))
+                  {
+                    game_right++;
+                    game();
+                  } 
+
+        if ((punti_left == 4) && (punti_right <3))
+                  {
+                    game_left++;
+                    game();
+                  } 
+        if (punti_right == 5) 
+                  {
+                    game_right++;
+                    game();
+                  } 
+
+        if (punti_left == 5)
+                  {
+                    game_left++;
+                    game();
+                  }
+                } 
   }
   
 function destra(){
@@ -176,7 +222,7 @@ function destra(){
                   punti_right++;
                 }
             audioElement.play();
-                      calcola_punteggio(); 
+            calcola_punteggio(); 
 }
 
 function sinistra(){
@@ -193,13 +239,66 @@ function sinistra(){
             calcola_punteggio(); 
 }
 
+  //  *************************************************
+  //  *******************     RESET        ************
+  //  *************************************************
+function reset()
+{
+    punti_left = 0;
+    punti_right = 0;
+    game_left = 0;
+    game_right = 0;
+    set_left = 0;
+    set_right = 0;
+
+    ball_left = 1;		
+
+    $("#punti_left").text("00");
+    $("#punti_right").text("00");
+    $("#game_left").text("0");
+    $("#game_right").text("0");
+    $("#set_left").text("0");
+    $("#set_right").text("0");  
+    $("#punti").text("Point");
+    
+    $("#ball_left").attr("src","img/ball.png");
+    $("#ball_right").attr("src","img/blank.png");
+}
+
+
+  //  *************************************************
+  //  *******************     UNDO         ************
+  //  *************************************************
+function undo()
+{
+
+}
+
+
 // ******************* MAIN *************************
 $(document).foundation();
 
   $(document).ready(function(){
 
   //  *************************************************
-  //  ******************* IMPUT DA GAMEPAD ************
+  //  ***************LEGGE VARIABILI       ************
+  //  *************************************************
+  name_player1 = sessionStorage.getItem("player1");
+  name_player2 = sessionStorage.getItem("player2");
+  max_sets = sessionStorage.getItem("max_sets");
+  if (name_player1.length > 2)
+        {
+          $('#player1').text(name_player1);        
+        }
+  
+  if (name_player2.length > 2)
+        {
+          $('#player2').text(name_player2);        
+        }
+  
+  console.log(name_player1);  
+  //  *************************************************
+  //  ******************* INPUT DA GAMEPAD ************
   //  *************************************************
 
   window.gamepad = new Gamepad();
@@ -252,38 +351,41 @@ $(document).foundation();
 
   // RESET BUTTON
   $('#reset').click(function(){
-    punti_left = 0;
-    punti_right = 0;
-    game_left = 0;
-    game_right = 0;
-    set_left = 0;
-    set_right = 0;
-
-    ball_left = 1;		
-
-    $("#punti_left").text("00");
-    $("#punti_right").text("00");
-    $("#game_left").text("0");
-    $("#game_right").text("0");
-    $("#set_left").text("0");
-    $("#set_right").text("0");  
-    
-    $("#ball_left").attr("src","img/ball.png");
-    $("#ball_right").attr("src","img/blank.png");
-
+      reset();
    });
+
+  // UNDO BUTTON
+  $('#undo').click(function(){
+    undo();
+ });
+
 
  // CONTROLLA INPUT DA TASTIERA
    $("body").on("keypress", function (e) {
-          console.log(e.which);
+      console.log(e.which);
       switch(e.which)
       {
-                case 114: //RIGHT
-            destra();
-                      break;
-                case 108: //LEFT
-            sinistra();
-                   break;
-        }
+            case 114: //RESET
+                  reset();
+                  break;
+            case 82: //RESET
+                  reset();
+                  break;
+            case 49: //Player1
+                  sinistra();
+                  break;
+            case 50: //Player2
+                  destra();
+                  break;
+            case 117: //Undo
+                  undo();
+                  break;
+            case 85: //Undo
+                  undo();
+                  break;
+
+
+                }
+              
     });
 });

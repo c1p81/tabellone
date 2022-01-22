@@ -2,7 +2,7 @@
 Tabellone e' una web app JQuery HTML5 per la gestione del punteggio del tennis
 
 Puo' essere utilizzato su dispositivi touchscreen utilizzando i pulsanti a video
-Si puo' utilizzare una tastiera mediante le lettere L ed R per il punteggio dei due giocatori
+Si puo' utilizzare una tastiera mediante i numeri 1 e 2 per il punteggio dei due giocatori (U per undo, R per reset)
 Si puo' infine utilizzare un gamepad (anche bluetooth) per il controllo remoto. I giocatori possono trovare comodi i mini gamepad che possono essere tenuti anche in tasca
 
 ![Getting Started](./img/mini.jpg)
