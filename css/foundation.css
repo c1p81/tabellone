@@ -1165,12 +1165,12 @@ button, .button {
   padding: 1rem 2rem 1.0625rem 2rem;
   font-size: 1rem;
   background-color: #008CBA;
-  border-color: #e1e8eb;
+  border-color: yellow;
   color: #FFFFFF;
   transition: background-color 300ms ease-out; }
   button:hover, button:focus, .button:hover, .button:focus {
     background-color: #404038; 
-    border-color: #b9b9b9;
+    border-color: yellow;
     border-width: 1px;
   }
   button:hover, button:focus, .button:hover, .button:focus {

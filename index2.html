@@ -39,6 +39,8 @@
     <div class="Timer"></div>
   </center>
 
+  
+
     <div class="row">
       <div class="large-12 columns" >
         <div class="row">
@@ -71,29 +73,45 @@
     </div>
 
     <div class="row">
-      <div class="large-12 columns" ><center> 
-        <form id="tab"></form>
-        <button class="button round" id="player1" type="submit">Player 1</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="button round" id="player2" type="submit">Player 2</button>
-
-      </form> 
-      </center>
+      <div class="large-12 columns" >
+        <div class="row">
+          <div class="large-1 columns"> 
+            <center><img width='50px' src='img/up-arrow.png'></center>
+          </div>
+          <div class="large-5 columns"> 
+            <button class="button round expand" id="player1" type="submit">Player 1</button>
+          </div>
+          <div class="large-5 columns"> 
+            <button class="button round expand" id="player2" type="submit">Player 2</button>
+          </div>
+          <div class="large-1 columns"> 
+            <center><img width='50px' src='img/down-arrow.png'></center>
+          </div>
+    
+        </div>
+      
       </div>
     </div>
 
 
 
     <div class="row">
-      <div class="large-12 columns" ><center> 
-        <form id="tabellone"></form>
-        <button class="button round" id="reset" type="submit">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="button round" id="undo" type="submit">Undo</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="button round" id="full_screen" type="submit">Full Screen</button>
-
-      </form> 
-      </center>
-      </div>
-    </div>
+      <div class="large-12 columns" >
+        <div class="row">
+          <div class="large-3 columns"> 
+            <button class="button round expand" id="reset" type="submit">Reset</button>
+          </div>
+          <div class="large-3 columns"> 
+              <button class="button round expand" id="undo" type="submit">Undo</button>
+          </div>
+          <div class="large-3 columns">
+              <button class="button round expand" id="full_screen" type="submit">Full Screen</button>
+          </div>
+          <div class="large-3 columns">
+              <button class="button round expand" id="back" onclick="history.back()">End</button>
+          </div>
+        </div>
+        </div>
   
 
     
@@ -102,6 +120,10 @@
     <script src="gamepad.js"></script>
     <script src="codice.js"></script>
 
+    <script>
+      $("#back").click(function() {
 
+      });
+      </script>
   </body>
 </html>

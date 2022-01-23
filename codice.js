@@ -9,6 +9,7 @@ var name_player2 = "Player 2";
 var max_sets = 3;
 // gestisce l'indicatore del servizio
 var ball_left = 1;
+var time_start;
 
 // audio
 var audioElement;
@@ -54,7 +55,16 @@ var h = addZero(date.getHours());
 var m = addZero(date.getMinutes());
 var s = addZero(date.getSeconds());
 
-$('.Timer').text(h + ':' + m + ':' + s)
+var diff = date.getTime() - time_start;
+var msec = diff;
+var hh = Math.floor(msec / 1000 / 60 / 60);
+msec -= hh * 1000 * 60 * 60;
+var mm = Math.floor(msec / 1000 / 60);
+msec -= mm * 1000 * 60;
+var ss = Math.floor(msec / 1000);
+msec -= ss * 1000;
+
+$('.Timer').text(h + ':' + m + ':' + s + ' / ' + addZero(hh) + ':' + addZero(mm) + ':' + addZero(ss))
 }
 
 // ************************************************************************
@@ -112,6 +122,7 @@ function game()
           punti_right = 0;
           return;
         }
+        
   if ((game_left == 6) && (game_right < 5))
         {
           set_left++;
@@ -135,16 +146,13 @@ function game()
           set_right++;
           set();
         }
-
-
 }
 
 function calcola_punteggio()
 {
-
-  if (TieBreak)
+  if ((TieBreak) && ((set_left+set_right+1) < max_sets))
   {
-        // *************** PUNTEGGIO GAME ***********************
+        // *************** PUNTEGGIO TIEBREAK ***********************
         $("#punti_left").text(punti_left.toString());
         $("#punti_right").text(punti_right.toString());
 
@@ -279,6 +287,11 @@ function undo()
 $(document).foundation();
 
   $(document).ready(function(){
+  
+  // TEMPO INIZIO PARTITA
+  var date_start = new Date();
+  time_start = date_start.getTime();
+  
 
   //  *************************************************
   //  ***************LEGGE VARIABILI       ************
